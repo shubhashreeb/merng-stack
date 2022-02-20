@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/authContext';
 import { useForm } from '../../utility/hooks';
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'graphql-tag';
+import Profile from "../profile/profile";
 //import {TextField, Button, Container, Stack, Alert } from '@mui/material'
 
 const LOGIN_USER = gql `
@@ -32,7 +33,6 @@ function Login(props) {
         loginUser();
           console.log("after login user hit")
 
-
     }
 
     const {onChange, onSubmit, values} = useForm(loginUserCallback, {
@@ -46,7 +46,7 @@ function Login(props) {
             console.log(userData)
             console.log("login user: ", loginUser)
             alert("Login successful!!!")
-            navigate('/');
+            navigate('/profile');
         },
         onError({ graphQLErrors }) {
             setErrors(graphQLErrors)
@@ -116,9 +116,6 @@ function Login(props) {
             <input type="text" name="email" placeholder="Your Email" onChange={onChange}></input>
             <input type="password" name="password" placeholder="Your Password" onChange={onChange}></input>
             <div className="button" onClick={onSubmit} >Login</div>
-            {/* <input type="text" name="email" value={user.email} onChange={handleChange} placeholder="Enter your Email"></input>
-            <input type="password" name="password" value={user.password} onChange={handleChange}  placeholder="Enter your Password" ></input> */}
-            {/* <div className="button" onClick={login}>Login</div> */}
             <div>or</div>
             <div className="button" onClick={() => navigate("/register")}>Register</div>
         </div>

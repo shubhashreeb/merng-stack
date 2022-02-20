@@ -1,7 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/authContext'
+import { useNavigate } from 'react-router-dom'
+
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext);
+
+    let navigate = useNavigate();
+
+    const onLogout = ()=> {
+        logout()
+        navigate('/')
+    }
+    console.log(user);
     return (
         <header> 
         <div className='container'>
@@ -10,18 +23,26 @@ const Navbar = () => {
                     <Link to = '/homepage'>Book Exchange App</Link>
                 </div>
                 <ul className = 'nav-links'>
-                    <li>
-                        <Link to = '/add' className='btn'>+Add</Link>
-                    </li>
-                    <li>
+               
+                {user ?
+                <>
+               <li>
+               <Link to = '/' className='btn' onClick={onLogout}>Logout</Link>
+                </li>
+                </>
+                :
+                <>
+                <li>
                     <Link to = '/register'> Register</Link>
-                    </li>
-                    <li>
-                        <Link to = '/login'>Login</Link>
-                    </li>
-                    <li>
-                        <Link to = '/homepage'>Home</Link>
-                    </li>
+                </li>
+                <li>
+                    <Link to = '/login'>Login</Link>
+                </li>
+                </>
+                }
+                {/* <li>
+                    <Link to = '/add' className='btn'>+Add</Link>
+                </li>   */}
                    
                 </ul>
             </div>

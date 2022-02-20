@@ -64,6 +64,10 @@ body, html, .App, #root, .outer {
   margin-right: auto;
   margin-left: auto;
 }
+.logout {
+  background-color: #ffffff;
+  color: #ffffff
+}
 /* Header Styles */
 header {
   background-color: #032541;
