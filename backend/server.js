@@ -21,18 +21,10 @@ app.use(express.json());
    });
 
 app.get('/', (req, res) => {
-    res.send('Hello this is Auth!');
+    res.send('Hello from  the Book Exchange app');
   });
 
 app.use(express.static('public'));
-// const PORT = process.env.PORT || 4000;
-
-// server.start().then(() => {
-// server.applyMiddleware({ app, path: '/graphql' });
-// app.listen(PORT, function () {
-//   console.log(`server started on port ${PORT}`);
-// });
-// });
 
 const PORT = process.env.PORT || 4000;
 (async function () {
