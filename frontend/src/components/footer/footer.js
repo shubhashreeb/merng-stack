@@ -5,9 +5,7 @@ const Footer = () => {
 <footer>
  <div className="footer">
 <div className='container'>
- 
   &copy; The Book Exchange app 
-
   </div>
   </div>
 </footer>
